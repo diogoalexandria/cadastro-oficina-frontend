@@ -1,10 +1,10 @@
 import { SET_BRAND, SET_MODEL, SET_LICENSE_PLATE, SET_MECHANIC_NAME, SET_ITEMS_LIST } from '../actions/form';
 
 const INITIAL_STATE = {
-    brand: '',
-    model: '',
-    licensePlate: '',
-    mechanicName: '',
+    brand: 'Ford',
+    model: 'Ka',
+    licensePlate: 'KXE5243',
+    mechanicName: 'Diogo',
     itemList: [],
 }
 
