@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     },
 });
 
-function RegisterForm({ modules, setBrandAction, setModelAction, setLicensePlateAction, setMechanicNameAction }) {
+function RegisterForm({ setBrandAction, setModelAction, setLicensePlateAction, setMechanicNameAction, setItemsListAction }) {
     const classes = useStyles();
 
     const [brand, setBrand] = useState('');
@@ -23,7 +23,7 @@ function RegisterForm({ modules, setBrandAction, setModelAction, setLicensePlate
     const [mechanicName, setMechanicName] = useState('');
     const [item, setItem] = useState('');
     const [cost, setCost] = useState('');    
-    const [itemList, setItemList] = useState([{nome:'teste1', custo: 35.55},{nome:'teste2', custo:65.9},{nome:'teste3', custo: 23.45}]);
+    const [itemList, setItemList] = useState([]);
     const [statusAddItemButton, setStatusAddItemButton] = useState(true);
 
     useEffect(() => {
@@ -33,34 +33,32 @@ function RegisterForm({ modules, setBrandAction, setModelAction, setLicensePlate
         setStatusAddItemButton(true);
     }, [cost, item]);
     
-    const handleOnChangeBrand = event => {
-        let brand = event.target.value;        
-        setBrand(brand);
-        setBrandAction(brand);
+    const handleOnChangeBrand = event => {               
+        setBrand(event.target.value);
+        setBrandAction(event.target.value);
     }
 
-    const handleOnChangeModel = event => {
-        let model = event.target.value;
-        setModel(model);
-        setModelAction(model);
+    const handleOnChangeModel = event => {        
+        setModel(event.target.value);
+        setModelAction(event.target.value);
     }
 
-    const handleOnChangeLicensePlate = event => {
-        let licensePLate = event.target.value;
-        setLicensePlate(licensePLate);
-        setLicensePlateAction(licensePLate);
+    const handleOnChangeLicensePlate = event => {        
+        setLicensePlate(event.target.value);
+        setLicensePlateAction(event.target.value);
     }
 
-    const handleOnChangeMechanicName = event => {
-        let mechanicName = event.target.value;
-        setMechanicName(mechanicName);
-        setMechanicNameAction(mechanicName);
+    const handleOnChangeMechanicName = event => {        
+        setMechanicName(event.target.value);
+        setMechanicNameAction(event.target.value);
     }
     
     const handleAddItemButton = () => {
         let numberFloat = parseFloat(cost);
         if(numberFloat > 0) {
-            setItemList([...statusAddItemButton, {nome: item, custo: numberFloat}]);
+            let newList = [...itemList, {nome: item, custo: numberFloat}]
+            setItemList(newList);
+            setItemsListAction(newList);
         }
         setItem('');
         setCost('');
@@ -156,7 +154,8 @@ const mapDispatchToProps = dispatch => ({
     setBrandAction: brand => dispatch(FormActions.setBrand(brand)),
     setModelAction: model => dispatch(FormActions.setModel(model)),
     setLicensePlateAction: licensePLate => dispatch(FormActions.setLicensePlate(licensePLate)),
-    setMechanicNameAction: mechanicName => dispatch(FormActions.setMechanicName(mechanicName))
+    setMechanicNameAction: mechanicName => dispatch(FormActions.setMechanicName(mechanicName)),
+    setItemsListAction: itemsList => dispatch(FormActions.setItemsList(itemsList))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm)

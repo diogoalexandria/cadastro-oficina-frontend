@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     },
 });
 
-function RegisterPreview({ brand, model, licensePlate, mechanicName }) {
+function RegisterPreview({ brand, model, licensePlate, mechanicName, itemList }) {
     const classes = useStyles();   
 
     return (
@@ -64,7 +64,15 @@ function RegisterPreview({ brand, model, licensePlate, mechanicName }) {
                         </Box>
                         <Typography className={classes.registerLabel}>
                             Iten(s):
-                        </Typography>                        
+                        </Typography>
+                        {itemList.map(item => {                            
+                            return (
+                                <Box display="flex" justifyContent="space-around">
+                                    <Typography>{item.nome}</Typography>
+                                    <Typography>{item.custo}</Typography>
+                                </Box>
+                            );
+                        })}                        
                     </CardContent>
                 </Box>
                 <Box className={classes.registerButtom} display="flex" justifyContent="center" alignItems="flex-start">
@@ -83,7 +91,8 @@ const mapStateToProps = state => ({
     brand: state.formReducer.brand,
     model: state.formReducer.model,
     licensePlate: state.formReducer.licensePlate,
-    mechanicName: state.formReducer.mechanicName
+    mechanicName: state.formReducer.mechanicName,
+    itemList: state.formReducer.itemList
 });
 
 export default connect(mapStateToProps)(RegisterPreview);

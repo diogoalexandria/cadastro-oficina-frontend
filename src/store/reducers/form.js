@@ -1,22 +1,25 @@
-import { SET_BRAND, SET_MODEL, SET_LICENSE_PLATE, SET_MECHANIC_NAME } from '../actions/form';
+import { SET_BRAND, SET_MODEL, SET_LICENSE_PLATE, SET_MECHANIC_NAME, SET_ITEMS_LIST } from '../actions/form';
 
 const INITIAL_STATE = {
     brand: '',
     model: '',
     licensePlate: '',
-    mechanicName: ''
+    mechanicName: '',
+    itemList: [],
 }
 
- export default function formReducer(state = INITIAL_STATE, action) {    
+ export default function formReducer(state = INITIAL_STATE, action) {        
     switch(action.type) {
         case SET_BRAND:            
             return { ...state, brand: action.payload }
         case SET_MODEL:
             return { ...state, model: action.payload }
         case SET_LICENSE_PLATE:
-            return { ...state, model: action.payload }
+            return { ...state, licensePlate: action.payload }
         case SET_MECHANIC_NAME:
-            return { ...state, model: action.payload }
+            return { ...state, mechanicName: action.payload }
+        case SET_ITEMS_LIST:
+            return { ...state, itemList: action.payload }
         default:
             return state
     }
