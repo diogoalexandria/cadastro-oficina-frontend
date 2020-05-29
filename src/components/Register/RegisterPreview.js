@@ -45,38 +45,50 @@ function RegisterPreview({ brand, model, licensePlate, mechanicName, itemList })
                     <CardContent>
                         <Typography variant="h6">
                             Registro:
+                        </Typography>
+                        <Box display="flex" justifyContent="space-around">
+                            <Box>
+                                <Typography className={classes.registerLabel}>
+                                    Marca do carro:
                                 </Typography>
-                        <Typography className={classes.registerLabel}>
-                            Marca do carro:
+                                <Box fontStyle="italic">
+                                    <Typography className={classes.registerValue}>
+                                        {brand}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                            <Box>
+                                <Typography className={classes.registerLabel}>
+                                    Modelo do carro:
                                 </Typography>
-                        <Box fontStyle="italic">
-                            <Typography className={classes.registerValue}>
-                                {brand}
-                            </Typography>
+                                <Box fontStyle="italic">
+                                    <Typography className={classes.registerValue}>
+                                        {model}
+                                    </Typography>
+                                </Box>
+                            </Box>
                         </Box>
-                        <Typography className={classes.registerLabel}>
-                            Modelo do carro:
+                        <Box display="flex" justifyContent="space-around">
+                            <Box>
+                                <Typography className={classes.registerLabel}>
+                                    Placa do carro:
                                 </Typography>
-                        <Box fontStyle="italic">
-                            <Typography className={classes.registerValue}>
-                                {model}
-                            </Typography>
-                        </Box>
-                        <Typography className={classes.registerLabel}>
-                            Placa do carro:
+                                <Box fontStyle="italic">
+                                    <Typography className={classes.registerValue}>
+                                        {licensePlate}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                            <Box>
+                                <Typography className={classes.registerLabel}>
+                                    Mecânico:
                                 </Typography>
-                        <Box fontStyle="italic">
-                            <Typography className={classes.registerValue}>
-                                {licensePlate}
-                            </Typography>
-                        </Box>
-                        <Typography className={classes.registerLabel}>
-                            Mecânico:
-                                </Typography>
-                        <Box fontStyle="italic">
-                            <Typography className={classes.registerValue}>
-                                {mechanicName}
-                            </Typography>
+                                <Box fontStyle="italic">
+                                    <Typography className={classes.registerValue}>
+                                        {mechanicName}
+                                    </Typography>
+                                </Box>
+                            </Box>
                         </Box>
                         <Typography className={classes.registerLabel}>
                             Iten(s):
@@ -85,7 +97,7 @@ function RegisterPreview({ brand, model, licensePlate, mechanicName, itemList })
                             return (
                                 <Box display="flex" justifyContent="space-around" alignItems="flex-start">
                                     <Typography>{item.nome}</Typography>
-                                    <Typography>R$ {item.custo}</Typography>
+                                    <Typography>R$ {item.custo.toFixed(2)}</Typography>
                                 </Box>
                             );
                         })}

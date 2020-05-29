@@ -10,14 +10,21 @@ const useStyles = makeStyles({
         marginBottom: '20px'
     },
     formTextField: {
-        margin: '15px'
+        margin: '12px'
     },
     addItemButton: {
         marginTop: '20px'
     }
 });
 
-function RegisterForm({ setBrandAction, setModelAction, setLicensePlateAction, setMechanicNameAction, setItemsListAction }) {
+function RegisterForm({ 
+    setBrandAction,
+    setModelAction,
+    setLicensePlateAction,
+    setMechanicNameAction,
+    setItemsListAction,
+    setStatusAddConfirmationAction }) {
+
     const classes = useStyles();
 
     const [brand, setBrand] = useState('Ford');
@@ -27,7 +34,7 @@ function RegisterForm({ setBrandAction, setModelAction, setLicensePlateAction, s
     const [item, setItem] = useState('');
     const [cost, setCost] = useState('');
     const [itemList, setItemList] = useState([]);
-    const [statusAddItemButton, setStatusAddItemButton] = useState(true);
+    const [statusAddItemButton, setStatusAddItemButton] = useState(true);    
 
     useEffect(() => {
         if (item && cost)
@@ -63,8 +70,12 @@ function RegisterForm({ setBrandAction, setModelAction, setLicensePlateAction, s
             setItemList(newList);
             setItemsListAction(newList);
         }
+        setStatusAddConfirmationAction(true);
         setItem('');
         setCost('');
+        setTimeout(() => {
+            setStatusAddConfirmationAction(false);
+        }, 3000);
     }
 
     return (
@@ -76,7 +87,7 @@ function RegisterForm({ setBrandAction, setModelAction, setLicensePlateAction, s
             </Box>
             <form action="">
                 <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                    <Box display="flex" flexWrap="wrap">
+                    <Box display="flex" flexWrap="wrap" justifyContent="center" alignItems="center">
                         <TextField
                             className={classes.formTextField}
                             value={brand}
@@ -94,7 +105,7 @@ function RegisterForm({ setBrandAction, setModelAction, setLicensePlateAction, s
                             variant="outlined"
                         />
                     </Box>
-                    <Box display="flex" flexWrap="wrap">
+                    <Box display="flex" flexWrap="wrap" justifyContent="center" alignItems="center">
                         <TextField
                             className={classes.formTextField}
                             value={licensePlate}
@@ -117,7 +128,7 @@ function RegisterForm({ setBrandAction, setModelAction, setLicensePlateAction, s
                             Itens do registro:
                         </Typography>
                     </Box>
-                    <Box display="flex" flexWrap="wrap">
+                    <Box display="flex" flexWrap="wrap" justifyContent="center" alignItems="center">
                         <TextField
                             className={classes.formTextField}
                             value={item}
@@ -150,8 +161,8 @@ function RegisterForm({ setBrandAction, setModelAction, setLicensePlateAction, s
                     color="primary"
                 >
                     Adicionar item
-                        </Button>
-            </Box>
+                </Button>                
+            </Box>            
         </React.Fragment>
     )
 }
@@ -163,7 +174,8 @@ const mapDispatchToProps = dispatch => ({
     setModelAction: model => dispatch(FormActions.setModel(model)),
     setLicensePlateAction: licensePLate => dispatch(FormActions.setLicensePlate(licensePLate)),
     setMechanicNameAction: mechanicName => dispatch(FormActions.setMechanicName(mechanicName)),
-    setItemsListAction: itemsList => dispatch(FormActions.setItemsList(itemsList))
+    setItemsListAction: itemsList => dispatch(FormActions.setItemsList(itemsList)),
+    setStatusAddConfirmationAction: statusAddConfirmation => dispatch(FormActions.setStatusAddConfirmation(statusAddConfirmation))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm)

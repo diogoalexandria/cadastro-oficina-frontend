@@ -1,4 +1,11 @@
-import { SET_BRAND, SET_MODEL, SET_LICENSE_PLATE, SET_MECHANIC_NAME, SET_ITEMS_LIST } from '../actions/form';
+import {
+    SET_BRAND,
+    SET_MODEL,
+    SET_LICENSE_PLATE,
+    SET_MECHANIC_NAME,
+    SET_ITEMS_LIST,
+    SET_STATUS_ADD_CONFIRMATION
+} from '../actions/form';
 
 const INITIAL_STATE = {
     brand: 'Ford',
@@ -6,6 +13,7 @@ const INITIAL_STATE = {
     licensePlate: 'KXE5243',
     mechanicName: 'Diogo',
     itemList: [],
+    statusAddConfirmation: false
 }
 
  export default function formReducer(state = INITIAL_STATE, action) {        
@@ -20,6 +28,8 @@ const INITIAL_STATE = {
             return { ...state, mechanicName: action.payload }
         case SET_ITEMS_LIST:
             return { ...state, itemList: action.payload }
+        case SET_STATUS_ADD_CONFIRMATION:
+            return { ...state, statusAddConfirmation: action.payload }
         default:
             return state
     }
