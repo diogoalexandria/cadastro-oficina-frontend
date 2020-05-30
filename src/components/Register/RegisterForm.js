@@ -27,10 +27,10 @@ function RegisterForm({
 
     const classes = useStyles();
 
-    const [brand, setBrand] = useState('Ford');
-    const [model, setModel] = useState('Ka');
-    const [licensePlate, setLicensePlate] = useState('KXE5243');
-    const [mechanicName, setMechanicName] = useState('Diogo');
+    const [brand, setBrand] = useState('');
+    const [model, setModel] = useState('');
+    const [licensePlate, setLicensePlate] = useState('');
+    const [mechanicName, setMechanicName] = useState('');
     const [item, setItem] = useState('');
     const [cost, setCost] = useState('');
     const [itemList, setItemList] = useState([]);

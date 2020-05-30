@@ -8,10 +8,10 @@ import {
 } from '../actions/form';
 
 const INITIAL_STATE = {
-    brand: 'Ford',
-    model: 'Ka',
-    licensePlate: 'KXE5243',
-    mechanicName: 'Diogo',
+    brand: '',
+    model: '',
+    licensePlate: '',
+    mechanicName: '',
     itemList: [],
     statusAddConfirmation: false
 }

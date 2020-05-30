@@ -16,7 +16,7 @@ const useStyles = makeStyles({
         height: '10vh',
     },
     root: {
-        height: '80vh'
+        height: '90vh'
     },
     form: {
         marginBottom: '40px'
